@@ -1,4 +1,5 @@
 import pytest
+import generate
 
 from selenium import webdriver
 
@@ -11,3 +12,8 @@ def driver():
     d = webdriver.Chrome(service=Service(ChromeDriverManager().install()))  # запустили драйвер
     d.get("https://stellarburgers.nomoreparties.site/")
     return d
+
+# перед стартом каждого теста генерируем логин и пароль для тестового пользователя
+@pytest.fixture
+def user_email_password():
+    return [generate.email(), generate.password()]
