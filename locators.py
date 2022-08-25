@@ -7,6 +7,11 @@ make_order = "//button[contains(text(),'Оформить заказ')]" # кно
 email_input = "//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/input[1]" #поле ввода емейла
 password_input = "//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]" #поле ввода пароля
 entrance_button = "//button[contains(text(),'Войти')]" #кнопка входа
+registration_link = "//a[contains(text(),'Зарегистрироваться')]" # линк на страницу регистрации
+restore_password_link = "//a[contains(text(),'Восстановить пароль')]" # линк на страницу восстановления пароля
+
+# страница регистрации / восстановления пароля
+entrance_link = "//a[contains(text(),'Войти')]" # линк на страницу входа
 
 # страница Личного кабинета авторизованного пользователя
 profile_label = "//a[contains(text(),'Профиль')]" #надпись Профиль
