@@ -1,26 +1,10 @@
-import time
 import locators
-
-import pytest
-
-from selenium import webdriver
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-
-
 class TestEntrance:
-    # перед стартом каждого теста создаем новый экземпляр драйвера
-    @pytest.fixture
-    def driver(self):
-        d = webdriver.Chrome(service=Service(ChromeDriverManager().install()))  # запустили драйвер
-        d.get("https://stellarburgers.nomoreparties.site/")
-        return d
-
     # успешный вход cуществующим пользователем через кнопку Войти в аккаунт
     def test_click_entrance_to_account_button_user_exist_authorization_successful(self, driver):
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
@@ -66,8 +50,9 @@ class TestEntrance:
         driver.find_element(By.XPATH, locators.password_input).send_keys("123456")
         driver.find_element(By.XPATH, locators.entrance_button).click()
         # проверяем результат авторизации
-        driver.find_element(By.XPATH, locators.account_button).click()  # кликаем на кнопку Личный кабинет
-        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
+        driver.find_element(By.XPATH, locators.account_button).click()
+        driver.find_element(By.XPATH, locators.account_button).click()# кликаем на кнопку Личный кабинет
+        WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.profile_label)))
         assert driver.find_element(By.XPATH, locators.profile_label)
         assert driver.find_element(By.XPATH, locators.history_label)
@@ -82,9 +67,9 @@ class TestEntrance:
         driver.find_element(By.XPATH, locators.restore_password_link).click()
         driver.find_element(By.XPATH, locators.entrance_link).click()
         driver.find_element(By.XPATH, locators.email_input).send_keys("tacron@tqc-sheen.com")
-        driver.find_element(By.XPATH, locators.password_input).send_keys("123456")
+        driver.find_element(By.XPATH, locators.password_input).send_keys("123")
         driver.find_element(By.XPATH, locators.entrance_button).click()
-        # проверяем результат авторизации
+        # проверяем результат
         driver.find_element(By.XPATH, locators.account_button).click()  # кликаем на кнопку Личный кабинет
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.profile_label)))
