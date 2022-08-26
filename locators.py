@@ -5,6 +5,13 @@ make_order = "//button[contains(text(),'Оформить заказ')]" # кно
 constructor_link = "//p[contains(text(),'Конструктор')]" # линк на конструктор в хэдере
 burger_ing_list = "//body/div[@id='root']/div[1]/main[1]/section[1]/div[2]" # список ингридиентов в конструкторе
 logo = "//header/nav[1]/div[1]/a[1]/*[1]" # логотип
+nachinki = "//span[contains(text(),'Начинки')]" # линк в раздел с Начинками
+nachinki_header = "//h2[contains(text(),'Начинки')]" # заголовок раздела с Начинками
+bulki = "//span[contains(text(),'Булки')]" # линк в раздел с Булками
+bulki_header = "//h2[contains(text(),'Булки')]" # заголовок раздела с Булками
+soys = "//span[contains(text(),'Соусы')]" #линк на раздел с Соусами
+soys_header = "//h2[contains(text(),'Соусы')]" # заголовок раздела с Соусами
+
 
 # страница авторизации
 email_input = "//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/input[1]" #поле ввода емейла
