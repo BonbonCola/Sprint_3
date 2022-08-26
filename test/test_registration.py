@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestRegistration:
+   # проверяем успешную регистарцию
     def test_registration_successful(self, driver, user_email_password):
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.account_button)))
@@ -32,6 +33,7 @@ class TestRegistration:
         assert driver.find_element(By.XPATH, locators.exit_button)
         driver.quit()
 
+    # проверяем ошибку при некорректном пароле
     def test_registration_invalid_password_unsuccessful(self, driver, user_email_password):
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.account_button)))
@@ -41,7 +43,7 @@ class TestRegistration:
         driver.find_element(By.XPATH, locators.registration_email_input).send_keys(user_email_password[1])
         driver.find_element(By.XPATH, locators.registration_password_input).send_keys("123")
         driver.find_element(By.XPATH, locators.registration_button).click()
-        # проверяем результат регистрации
+        # проверяем результат
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.invalid_password_error_label)))
         assert driver.find_element(By.XPATH, locators.invalid_password_error_label)

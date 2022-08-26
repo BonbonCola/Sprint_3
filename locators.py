@@ -2,6 +2,9 @@
 account_button = "//p[contains(text(),'Личный Кабинет')]" # кнопка Личный кабинет в хэдере
 entrance_to_account_button = "//button[contains(text(),'Войти в аккаунт')]" # кнопка Войти в аккаунт на главной
 make_order = "//button[contains(text(),'Оформить заказ')]" # кнопка Оформить заказ на главной
+constructor_link = "//p[contains(text(),'Конструктор')]" # линк на конструктор в хэдере
+burger_ing_list = "//body/div[@id='root']/div[1]/main[1]/section[1]/div[2]" # список ингридиентов в конструкторе
+logo = "//header/nav[1]/div[1]/a[1]/*[1]" # логотип
 
 # страница авторизации
 email_input = "//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/input[1]" #поле ввода емейла
