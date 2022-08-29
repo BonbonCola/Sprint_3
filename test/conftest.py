@@ -1,5 +1,4 @@
 import pytest
-import generate
 import locators
 
 from selenium import webdriver
@@ -11,6 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from mimesis import Person
+from mimesis.locales import Locale
+
 # перед стартом каждого теста создаем новый экземпляр драйвера
 @pytest.fixture
 def driver():
@@ -18,11 +20,6 @@ def driver():
     d.get("https://stellarburgers.nomoreparties.site/")
     yield d
     d.quit()
-
-# перед стартом каждого теста генерируем логин и пароль для тестового пользователя
-@pytest.fixture
-def user_email_password():
-    return [generate.email(), generate.password()]
 
 @pytest.fixture
 def driver_with_authorzed_user():
@@ -36,3 +33,9 @@ def driver_with_authorzed_user():
     d.find_element(By.XPATH, locators.entrance_button).click()  # жмем кнопку Войти
     yield d
     d.quit()
+
+# перед стартом каждого теста генерируем логин и пароль для тестового пользователя
+@pytest.fixture
+def user_email_password():
+    user = Person(Locale.EN)
+    return [user.email(unique=True), user.password(length=6)]
