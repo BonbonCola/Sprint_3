@@ -12,8 +12,11 @@ class TestRegistration:
             (By.XPATH, locators.account_button)))
         driver.find_element(By.XPATH, locators.account_button).click()
         driver.find_element(By.XPATH, locators.registration_link).click()
-        driver.find_element(By.XPATH, locators.registration_name_input).send_keys("Auto test")
-        driver.find_element(By.XPATH, locators.registration_email_input).send_keys(user_email_password[0])
+        # поле ввода имени и емейла - одинаковые, я не нашла за что зацепиться для каждого поля отдельно не используя индексы элементов из dom((
+        # возможно, в продакшене можно как то договориться с фронтами, чтобы такого не было. Но здесь это проект студента Практикума на курсе «React-разработчик».
+        name_and_email = driver.find_elements(By.XPATH, locators.registration_name_input)
+        name_and_email[0].send_keys("Auto test")
+        name_and_email[1].send_keys(user_email_password[0])
         driver.find_element(By.XPATH, locators.registration_password_input).send_keys(user_email_password[1])
         driver.find_element(By.XPATH, locators.registration_button).click()
         # проверяем результат регистрации

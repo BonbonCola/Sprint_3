@@ -33,6 +33,8 @@ class TestEntrance:
         driver.find_element(By.XPATH, locators.password_input).send_keys("123456")  # вводим пароль
         driver.find_element(By.XPATH, locators.entrance_button).click()  # жмем кнопку Войти
         # проверяем результат авторизации
+        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
+            (By.XPATH, locators.account_button)))
         driver.find_element(By.XPATH, locators.account_button).click()  # кликаем на кнопку Личный кабинет
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.profile_label)))
