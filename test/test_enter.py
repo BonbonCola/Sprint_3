@@ -22,7 +22,6 @@ class TestEntrance:
         assert driver.find_element(By.XPATH, locators.profile_label)
         assert driver.find_element(By.XPATH, locators.history_label)
         assert driver.find_element(By.XPATH, locators.exit_button)
-        driver.quit()
 
     # успешный вход cуществующим пользователем через кнопку Личный кабинет
     def test_click_account_button_user_exist_authorization_successful(self, driver):
@@ -41,7 +40,6 @@ class TestEntrance:
         assert driver.find_element(By.XPATH, locators.profile_label)
         assert driver.find_element(By.XPATH, locators.history_label)
         assert driver.find_element(By.XPATH, locators.exit_button)
-        driver.quit()
 
     # успешный вход cуществующим пользователем на странице регистрации
     def test_entrance_in_registration_form_user_exist_authorization_successful(self, driver):
@@ -61,7 +59,6 @@ class TestEntrance:
         assert driver.find_element(By.XPATH, locators.profile_label)
         assert driver.find_element(By.XPATH, locators.history_label)
         assert driver.find_element(By.XPATH, locators.exit_button)
-        driver.quit()
 
     # успешный вход cуществующим пользователем на странице восстановления пароля
     def test_entrance_in_restore_form_user_exist_authorization_successful(self, driver):
@@ -83,4 +80,3 @@ class TestEntrance:
                                    locators.profile_label)  # проверяем, что элементы личного кабинета авторизованного пользователя на месте
         assert driver.find_element(By.XPATH, locators.history_label)
         assert driver.find_element(By.XPATH, locators.exit_button)
-        driver.quit()

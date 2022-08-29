@@ -34,7 +34,6 @@ class TestRegistration:
         assert driver.find_element(By.XPATH, locators.profile_label)
         assert driver.find_element(By.XPATH, locators.history_label)
         assert driver.find_element(By.XPATH, locators.exit_button)
-        driver.quit()
 
     # проверяем ошибку при некорректном пароле
     def test_registration_invalid_password_unsuccessful(self, driver, user_email_password):
@@ -50,4 +49,3 @@ class TestRegistration:
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
             (By.XPATH, locators.invalid_password_error_label)))
         assert driver.find_element(By.XPATH, locators.invalid_password_error_label)
-        driver.quit()

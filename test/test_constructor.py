@@ -14,8 +14,6 @@ class TestConstructor:
         WebDriverWait(driver, 2)
         driver.find_element(By.XPATH, locators.bulki).click()
         assert driver.find_element(By.XPATH, locators.bulki_header)
-        WebDriverWait(driver, 2)
-        driver.quit()
 
     def test_go_to_soys_successful(self, driver):
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(
@@ -26,5 +24,3 @@ class TestConstructor:
         WebDriverWait(driver, 2)
         driver.find_element(By.XPATH, locators.soys).click()
         assert driver.find_element(By.XPATH, locators.soys_header)
-        WebDriverWait(driver, 2)
-        driver.quit()

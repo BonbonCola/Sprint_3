@@ -16,7 +16,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 def driver():
     d = webdriver.Chrome(service=Service(ChromeDriverManager().install()))  # запустили драйвер
     d.get("https://stellarburgers.nomoreparties.site/")
-    return d
+    yield d
+    d.quit()
 
 # перед стартом каждого теста генерируем логин и пароль для тестового пользователя
 @pytest.fixture
@@ -33,4 +34,5 @@ def driver_with_authorzed_user():
     d.find_element(By.XPATH, locators.email_input).send_keys("tacron@tqc-sheen.com")  # вводим емейл
     d.find_element(By.XPATH, locators.password_input).send_keys("123456")  # вводим пароль
     d.find_element(By.XPATH, locators.entrance_button).click()  # жмем кнопку Войти
-    return d
+    yield d
+    d.quit()
