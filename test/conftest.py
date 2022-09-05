@@ -14,6 +14,23 @@ from mimesis import Person
 from mimesis.locales import Locale
 
 # перед стартом каждого теста создаем новый экземпляр драйвера
+#@pytest.fixture(params=['firefox', 'chrome', 'safari'], scope='class') если фикстуру надо запускать только перед классом, а не перед каждым тестом
+# def init_driver(request):
+#     if request.param == "firefox":
+#         firefox_option = webdriver.FirefoxOptions()
+#         web_driver = webdriver.Firefox(options=firefox_option)
+#
+#     if request.param == "chrome":
+#         chome_options = webdriver.ChromeOptions()
+#         web_driver = webdriver.Chrome(options=chome_options)
+#
+#     if request.param == "safari":
+#         safari_options = SafariOptions()
+#         web_driver = webdriver.Safari(options=safari_options)
+#
+#     yield web_driver
+#
+#     web_driver.close()
 @pytest.fixture
 def driver():
     d = webdriver.Chrome(service=Service(ChromeDriverManager().install()))  # запустили драйвер
